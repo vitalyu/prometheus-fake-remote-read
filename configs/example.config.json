@@ -1,0 +1,25 @@
+{
+    "log_level": "DEBUG",
+    "input_series": [
+       {
+           "interval": "1m",
+           "series":   "up{job='backfiller_test'}",
+           "values":   "1+0x5 0+0x5"
+       },
+       {
+           "interval": "1m",
+           "series":   "test{job='backfiller_test'}",
+           "values":   "0+1x100 99-1x99"
+       },
+       {
+           "interval": "10m",
+           "series":   "test{job='backfiller_test2'}",
+           "values":   "0+5x100"
+       },
+       {
+           "interval": "1m",
+           "series":   "oleg",
+           "values":   "200+1x100"
+       }
+    ]
+}

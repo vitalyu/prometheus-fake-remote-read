@@ -1,0 +1,11 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/go
+{
+	"name": "Go",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "vscode",
+	"shutdownAction": "stopCompose",
+	"workspaceFolder": "/workspace",
+	"remoteUser": "root",
+	"postCreateCommand": "go version; go get -u github.com/cweill/gotests/..."
+}
