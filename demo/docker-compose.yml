@@ -1,0 +1,9 @@
+services:
+  remotestorage:
+    image: ghcr.io/vitalyu/prometheus-fake-remote-read:latest
+  prom:
+    image: prom/prometheus:v2.53.1
+    volumes:
+      - "./prometheus-config.yml:/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"

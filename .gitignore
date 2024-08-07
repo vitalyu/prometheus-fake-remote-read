@@ -25,5 +25,5 @@ go.work.sum
 .env
 
 # others
-bin/
+dist/
 .devcontainer/grafana-data/

@@ -27,16 +27,18 @@ test: ## Run tests
 run: ## Run for current platform
 	CGO_ENABLED=0 go run ./cmd/prometheus-fake-remote-read --config configs/example.config.json
 
+.PHONY: demo
+demo: ## Run docker compose and checkout http://127.0.0.1:9090
+	docker compose --project-directory ./demo/ up
+	docker compose --project-directory ./demo/ rm --stop --volumes --force
+
 ##@ Build
 
 .PHONY: build
 build: ## Build for current platform
 	mkdir ./bin/ || true
-	CGO_ENABLED=0 go build -o ./bin/ ./cmd/prometheus-fake-remote-read 
+	CGO_ENABLED=0 go build -o ./dist/ ./cmd/prometheus-fake-remote-read 
 
-.PHONY: docker-build
-docker-build: ## Test building dockerfile for multiplatforms. Using buildx
-	docker buildx create --use
-	docker buildx build --platform linux/amd64 -t prometheus-fake-remote-read:amd64 .
-	docker buildx build --platform linux/arm64 -t prometheus-fake-remote-read:arm64 .
-
+.PHONY: goreleaser
+goreleaser: ## Build via goreleaser
+	goreleaser release --snapshot  --clean 
