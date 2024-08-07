@@ -9,6 +9,9 @@ on:
     tags:
     - "*"
 
+permissions:
+  contents: write
+
 jobs:
   golangci:
     name: Lint
