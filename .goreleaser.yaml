@@ -27,3 +27,31 @@ archives:
 
 checksum:
   name_template: "checksums.txt"
+
+dockers:
+- image_templates:
+  - "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}-amd64"
+  goarch: amd64
+  dockerfile: Dockerfile
+  use: buildx
+  build_flag_templates:
+  - --platform=linux/amd64
+
+- image_templates:
+  - "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}-arm64"
+  goarch: arm64
+  dockerfile: Dockerfile
+  use: buildx
+  build_flag_templates:
+  - --platform=linux/arm64/v8
+
+docker_manifests:
+- name_template: "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}"
+  image_templates:
+  - "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}-amd64"
+  - "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}-arm64"
+
+- name_template: "ghcr.io/vitalyu/{{ .ProjectName }}:latest"
+  image_templates:
+  - "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}-amd64"
+  - "ghcr.io/vitalyu/{{ .ProjectName }}:{{ .Version }}-arm64"
