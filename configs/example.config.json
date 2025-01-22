@@ -1,25 +1,30 @@
 {
     "log_level": "DEBUG",
     "input_series": [
-       {
-           "interval": "1m",
-           "series":   "up{job='backfiller_test'}",
-           "values":   "1+0x5 0+0x5"
-       },
-       {
-           "interval": "1m",
-           "series":   "test{job='backfiller_test'}",
-           "values":   "0+1x100 99-1x99"
-       },
-       {
-           "interval": "10m",
-           "series":   "test{job='backfiller_test2'}",
-           "values":   "0+5x100"
-       },
-       {
-           "interval": "1m",
-           "series":   "oleg",
-           "values":   "200+1x100"
-       }
+        {
+            "interval": "15s",
+            "series": "http_server_request_duration_seconds_bucket{http_route='/api/v1/query',http_request_method='GET',app_kubernetes_io_name='prometheus',app_kubernetes_io_component='server',app_kubernetes_io_instance='main',le='0.1'}",
+            "values": "100+10x20"
+        },
+        {
+            "interval": "15s",
+            "series": "http_server_request_duration_seconds_bucket{http_route='/api/v1/query',http_request_method='GET',app_kubernetes_io_name='prometheus',app_kubernetes_io_component='server',app_kubernetes_io_instance='main',le='0.2'}",
+            "values": "150+15x20"
+        },
+        {
+            "interval": "15s",
+            "series": "http_server_request_duration_seconds_bucket{http_route='/api/v1/query',http_request_method='GET',app_kubernetes_io_name='prometheus',app_kubernetes_io_component='server',app_kubernetes_io_instance='main',le='0.5'}",
+            "values": "200+20x20"
+        },
+        {
+            "interval": "15s",
+            "series": "http_server_request_duration_seconds_bucket{http_route='/api/v1/query',http_request_method='GET',app_kubernetes_io_name='prometheus',app_kubernetes_io_component='server',app_kubernetes_io_instance='main',le='1'}",
+            "values": "250+25x20"
+        },
+        {
+            "interval": "15s",
+            "series": "http_server_request_duration_seconds_bucket{http_route='/api/v1/query',http_request_method='GET',app_kubernetes_io_name='prometheus',app_kubernetes_io_component='server',app_kubernetes_io_instance='main',le='+Inf'}",
+            "values": "300+30x20"
+        }
     ]
 }

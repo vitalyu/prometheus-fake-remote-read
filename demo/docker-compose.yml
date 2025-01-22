@@ -1,6 +1,8 @@
 services:
   remotestorage:
     image: ghcr.io/vitalyu/prometheus-fake-remote-read:latest
+    volumes:
+      - "../configs/example.config.json:/root/example.config.json"
   prom:
     image: prom/prometheus:v2.53.1
     volumes:
